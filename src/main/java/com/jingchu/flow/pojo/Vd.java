@@ -31,4 +31,10 @@ public class Vd {
 
 //    private VdExtension extension = null;
 
+
+    public Vd(String vdCode, String vdName, String dataType) {
+        this.vdCode = vdCode;
+        this.vdName = vdName;
+        this.dataType = dataType;
+    }
 }
