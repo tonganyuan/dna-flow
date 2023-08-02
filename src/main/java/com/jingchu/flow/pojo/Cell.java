@@ -13,19 +13,19 @@ import java.util.Map;
 @Data
 public class Cell {
 
-    private long id;
+    protected long id;
 
-    private long rootId;
+    protected long rootId;
 
-    private long parentId;
+    protected long parentId;
 
-    private String operationFlag;
+    protected String operationFlag;
 
-    private String dnaCode;
+    protected String dnaCode;
 
-    private Map<String,Va> vas = new HashMap<>();
+    protected Map<String,Va> vas = new HashMap<>();
 
-    private Map<String,Inst> children = new HashMap<>();
+    protected Map<String,Inst> children = new HashMap<>();
 
-    private Inst owner;
+    protected Inst owner;
 }
