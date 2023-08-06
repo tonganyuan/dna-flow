@@ -1,10 +1,8 @@
 package com.jingchu.flow.pojo.util;
 
-import com.jingchu.flow.pojo.Cell;
-import com.jingchu.flow.pojo.Dna;
-import com.jingchu.flow.pojo.FilterResultCell;
-import com.jingchu.flow.pojo.Vd;
+import com.jingchu.flow.pojo.*;
 import com.jingchu.flow.pojo.cons.CodeDefConst;
+import com.jingchu.flow.pojo.cons.DataType;
 import com.jingchu.flow.pojo.cons.OperationFlag;
 
 /**
@@ -28,8 +26,30 @@ public class DnaTool {
             cell.setOperationFlag(OperationFlag.OPERATION_FLAG_NEW);
         }
         for (Vd vd : dna.getVds()) {
-
+            Va va = vd2Va(vd);
+            cell.getVas().put(vd.getVdName(),va);
         }
         return cell;
+    }
+
+    private static Va vd2Va(Vd vd) {
+        if(vd == null){
+            throw new RuntimeException("属性vd不能为空");
+        }
+        Va va = new Va();
+        va.setCode(vd.getVdCode());
+        va.setName(vd.getVdName());
+        String dataType = vd.getDataType();
+        va.setDataType(vd.getDataType());
+        if(DataType.DATA_TYPE_INTEGER.equals(dataType)){
+            va.setValue(0);
+        }
+        if(DataType.DATA_TYPE_LONG.equals(dataType)){
+            va.setValue(0L);
+        }
+        if(DataType.DATA_TYPE_FLOAT.equals(dataType)){
+            va.setValue(0.0);
+        }
+        return va;
     }
 }
